@@ -1,27 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Registro Seguro</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #ffc2d1;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff99c8;
+            box-shadow: 0 0 5px #ffc2d1;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: #ff99c8;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff66a3;
+        }
+
+        .error {
+            background: #ffe5ec;
+            color: #c9184a;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .users {
+            margin-top: 25px;
+        }
+
+        .users h3 {
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+        .users ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .users li {
+            background: #fff0f6;
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Registro de Usuario</h2>
+
+<div class="container">
+    <h2>💗 Registro Seguro</h2>
 
     {% if error %}
-        <p style="color:red;">{{ error }}</p>
+        <div class="error">{{ error }}</div>
     {% endif %}
 
     <form method="POST">
-        <input type="text" name="nombre" placeholder="Nombre"><br><br>
-        <input type="email" name="correo" placeholder="Correo"><br><br>
-        <input type="password" name="password" placeholder="Contraseña"><br><br>
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="email" name="correo" placeholder="Correo">
+        <input type="password" name="password" placeholder="Contraseña">
         <button type="submit">Registrar</button>
     </form>
 
-    <h3>Usuarios registrados</h3>
-    <ul>
-        {% for usuario in usuarios %}
-            <li>{{ usuario["nombre"] }} - {{ usuario["correo"] }}</li>
-        {% endfor %}
-    </ul>
+    <div class="users">
+        <h3>Usuarios registrados</h3>
+        <ul>
+            {% for usuario in usuarios %}
+                <li>{{ usuario["nombre"] }} - {{ usuario["correo"] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
 </body>
 </html>
